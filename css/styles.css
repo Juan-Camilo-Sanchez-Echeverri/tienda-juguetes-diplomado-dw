@@ -1,0 +1,101 @@
+/* Paleta de colores y tipografía */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --font-family-base: 'Roboto', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  margin: 0;
+  padding: 0;
+}
+
+/* Encabezado, pie de página y contenedores */
+header,
+footer {
+  background-color: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.container {
+  padding: 1rem;
+}
+
+/* Alineación de textos, márgenes y padding para secciones */
+h1,
+h2,
+h3,
+h4 {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Estilos para las miniaturas de la galería */
+.card {
+  margin-bottom: 1rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 0.25rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* 6. Estilos para el formulario de contacto */
+form {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+  margin-bottom: 0.5rem;
+}
+
+/* Validación visual del formulario (complementa la validación nativa de Bootstrap) */
+.was-validated .form-control:invalid {
+  border-color: #dc3545;
+}
+
+.was-validated .form-control:valid {
+  border-color: #28a745;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+}
+
+#featured-categories,
+#gallery-container,
+#contact {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.detail-image {
+  max-height: 300px;
+  object-fit: cover;
+  width: 100%;
+}
