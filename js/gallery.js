@@ -42,7 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
       col.classList.add('col-md-4', 'mb-3');
       col.innerHTML = `
         <div class="card">
-          <img src="${category.src}" class="card-img-top" alt="${category.name}">
+          <div class="ratio ratio-16x9">
+            <img src="${category.src}" loading="lazy" class="card-img-top" alt="${category.name}" style="object-fit: cover;">
+          </div>
           <div class="card-body text-center">
             <h5 class="card-title">${category.name}</h5>
             <a href="detail.html?id=${category.id}" class="btn btn-primary">Ver Detalle</a>
