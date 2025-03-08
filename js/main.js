@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     card.classList.add('col-md-4', 'mb-3');
     card.innerHTML = `
       <div class="card">
-        <img src="${category.src}" class="card-img-top" alt="${category.name}">
+        <img src="${category.src}" class="card-img-top" alt="${category.name}" loading="lazy">
         <div class="card-body text-center">
           <h5 class="card-title">${category.name}</h5>
           <a href="detail.html?id=${category.id}" class="btn btn-primary">Ver Detalle</a>
