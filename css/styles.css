@@ -54,6 +54,29 @@ h4 {
   transform: scale(1.02);
 }
 
+/* Mejoras para la carga de imágenes */
+.card-img-container {
+  position: relative;
+  overflow: hidden;
+  background-color: #f0f0f0; /* Color de placeholder */
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Efecto de carga progresiva */
+img.lazy-load {
+  opacity: 0;
+}
+
+img.lazy-load.loaded {
+  opacity: 1;
+}
+
 .card-img-top {
   width: 100%;
   height: 200px;
@@ -94,8 +117,31 @@ form {
   margin-bottom: 1rem;
 }
 
+/* Mejora para la vista de detalle */
 .detail-image {
-  max-height: 300px;
+  max-height: 400px;
   object-fit: cover;
   width: 100%;
+  background-color: #f0f0f0;
+}
+
+/* Mejoras de diseño responsivo */
+@media (max-width: 768px) {
+  .card-img-top {
+    height: 180px;
+  }
+  
+  .detail-image {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-img-top {
+    height: 150px;
+  }
+  
+  .detail-image {
+    max-height: 250px;
+  }
 }
