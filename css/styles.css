@@ -23,7 +23,7 @@ body {
 header,
 footer {
   background-color: var(--primary-color);
-  color: #fff;
+  color: #120c0c;
   text-align: center;
   padding: 1rem 0;
 }
