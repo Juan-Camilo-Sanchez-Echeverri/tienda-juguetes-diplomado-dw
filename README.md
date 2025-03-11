@@ -31,3 +31,5 @@ Este proyecto final tiene como objetivo consolidar los conocimientos adquiridos 
 - **Uso de Variables CSS:** Para una paleta de colores y tipografía coherente.
 - **Diseño Responsivo:** A través de Bootstrap y estilos personalizados.
 - **Código Limpio:** Facilita el mantenimiento y la escalabilidad del proyecto.
+- **Optimización de Imágenes:** Uso de atributo loading="lazy", formatos WebP, y estrategia de carga progresiva para mejorar el rendimiento.
+- **Optimización SEO:** Inclusión de metadatos y estructura semántica mejorada.
