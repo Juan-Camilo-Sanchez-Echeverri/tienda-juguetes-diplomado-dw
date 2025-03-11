@@ -41,6 +41,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
       name: 'Juegos de Construcción',
       type: 'juguetes-educativos',
       src: 'imgs/construccion.webp',
+      srcset: 'imgs/construccion.webp',
       width: 1200,
       height: 800,
       description:

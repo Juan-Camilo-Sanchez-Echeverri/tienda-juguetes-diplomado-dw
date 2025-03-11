@@ -35,6 +35,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
       name: 'Juegos de Construcción',
       type: 'juguetes-educativos',
       src: 'imgs/construccion.webp',
+      srcset: 'imgs/construccion.webp',
       width: 800,
       height: 600,
     },
@@ -55,11 +56,11 @@ document.addEventListener( 'DOMContentLoaded', () => {
         <div class="card h-100">
           <div class="ratio ratio-16x9 card-img-container">
             <img 
-              src="${ category.src }" 
-              srcset="${ category.srcset }"
+              data-src="${ category.src }" 
+              data-srcset="${ category.srcset || '' }"
               sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 800px"
               loading="lazy" 
-              class="card-img-top" 
+              class="card-img-top lazy-image" 
               alt="${ category.name }" 
               width="${ category.width }"
               height="${ category.height }"
@@ -73,6 +74,10 @@ document.addEventListener( 'DOMContentLoaded', () => {
       `;
       galleryContainer.appendChild( col );
     } );
+    
+    // Aplicar lazy loading a todas las imágenes
+    const lazyImages = document.querySelectorAll('.lazy-image');
+    lazyImages.forEach(img => observer.observe(img));
   }
 
   // Implementar observador de intersección para mejorar la carga
@@ -80,11 +85,17 @@ document.addEventListener( 'DOMContentLoaded', () => {
     entries.forEach( entry => {
       if ( entry.isIntersecting ) {
         const img = entry.target;
-        img.src = img.dataset.src;
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+        }
+        if (img.dataset.srcset) {
+          img.srcset = img.dataset.srcset;
+        }
+        img.classList.remove('lazy-image');
         observer.unobserve( img );
       }
     } );
-  } );
+  });
 
   categoryFilter.addEventListener( 'change', ( event ) => {
     loadGallery( event.target.value );
