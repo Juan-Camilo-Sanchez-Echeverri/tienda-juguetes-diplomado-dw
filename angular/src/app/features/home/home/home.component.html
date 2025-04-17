@@ -1,0 +1,37 @@
+<div class="home-container">
+  <div class="home-header">
+    <h1 class="main-title">Blog de Juguetes</h1>
+    <p class="subtitle">Descubre los mejores juguetes para niños de todas las edades</p>
+  </div>
+
+  <div class="search-container">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Buscar juguetes</mat-label>
+      <input matInput type="text" [(ngModel)]="searchTerm" placeholder="Escribe para buscar...">
+      <button *ngIf="searchTerm" matSuffix mat-icon-button aria-label="Limpiar" (click)="clearSearch()">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-container">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Cargando juguetes...</p>
+  </div>
+
+  <div *ngIf="!isLoading && filteredToys.length === 0" class="no-results">
+    <mat-icon>sentiment_dissatisfied</mat-icon>
+    <p>No se encontraron juguetes que coincidan con tu búsqueda.</p>
+  </div>
+
+  <div *ngIf="!isLoading && filteredToys.length > 0" class="toys-grid">
+    <div *ngFor="let toy of filteredToys" class="toy-item">
+      <app-toy-card
+        [toy]="toy"
+        (vote)="onVote($event)"
+        (delete)="onDelete($event)">
+      </app-toy-card>
+    </div>
+  </div>
+</div>
