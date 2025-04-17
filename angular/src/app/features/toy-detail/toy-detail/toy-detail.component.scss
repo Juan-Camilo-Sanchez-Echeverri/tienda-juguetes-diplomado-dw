@@ -1,0 +1,134 @@
+.detail-container {
+  padding: 20px 0;
+}
+
+.loading-container, .error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+  text-align: center;
+
+  p {
+    margin-top: 20px;
+    color: #666;
+  }
+
+  mat-icon {
+    font-size: 50px;
+    height: 50px;
+    width: 50px;
+    margin-bottom: 20px;
+  }
+}
+
+.error-container {
+  mat-icon {
+    color: #f44336;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+}
+
+.toy-detail {
+  .toy-detail-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .back-button {
+      margin-right: 15px;
+    }
+
+    .toy-title {
+      font-size: 2rem;
+      color: #3f51b5;
+      margin: 0;
+    }
+  }
+
+  .toy-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 40px;
+
+    .toy-image-container {
+      flex: 1;
+      min-width: 300px;
+
+      .toy-detail-image {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .toy-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+    }
+
+    .toy-details {
+      flex: 2;
+      min-width: 300px;
+
+      h2 {
+        color: #3f51b5;
+        margin-top: 0;
+        margin-bottom: 15px;
+      }
+
+      .toy-description {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .toy-metadata {
+        color: #666;
+        font-size: 0.9rem;
+
+        p {
+          margin: 5px 0;
+        }
+      }
+    }
+  }
+
+  .comments-section {
+    margin-top: 40px;
+
+    h2 {
+      font-size: 1.5rem;
+      color: #3f51b5;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .toy-content {
+    flex-direction: column;
+  }
+
+  .toy-detail-header {
+    .toy-title {
+      font-size: 1.5rem;
+    }
+  }
+}

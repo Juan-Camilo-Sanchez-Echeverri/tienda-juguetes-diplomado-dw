@@ -1,0 +1,52 @@
+<p>comment-form works!</p>
+
+<div class="comment-form-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Deja tu comentario</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name" placeholder="Tu nombre">
+            <mat-error *ngIf="commentForm.get('name')?.hasError('required')">
+              El nombre es obligatorio
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput formControlName="email" placeholder="Tu correo electrónico">
+            <mat-error *ngIf="commentForm.get('email')?.hasError('required')">
+              El correo electrónico es obligatorio
+            </mat-error>
+            <mat-error *ngIf="commentForm.get('email')?.hasError('email')">
+              Por favor, introduce un correo electrónico válido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="form-field w-100">
+          <mat-label>Comentario</mat-label>
+          <textarea matInput formControlName="message" rows="4" placeholder="Escribe tu comentario aquí"></textarea>
+          <mat-error *ngIf="commentForm.get('message')?.hasError('required')">
+            El comentario es obligatorio
+          </mat-error>
+        </mat-form-field>
+
+        <div class="form-actions">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="commentForm.invalid || isSubmitting">
+            <mat-icon>send</mat-icon> Enviar comentario
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

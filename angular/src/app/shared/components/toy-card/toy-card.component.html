@@ -1,0 +1,41 @@
+<mat-card class="toy-card">
+  <img mat-card-image [src]="toy.imageUrl" [alt]="toy.title" class="toy-image">
+
+  <mat-card-content>
+    <mat-card-title>{{ toy.title }}</mat-card-title>
+
+    <p class="toy-description">{{ toy.description | slice:0:120 }}{{ toy.description.length > 120 ? '...' : '' }}</p>
+
+    <div class="toy-metadata">
+      <div class="toy-date">
+        <mat-icon>calendar_today</mat-icon>
+        <span>{{ toy.createdAt | date: 'dd/MM/yyyy' }}</span>
+      </div>
+
+      <div class="toy-votes">
+        <mat-icon>thumb_up</mat-icon>
+        <span>{{ toy.votes }}</span>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions class="toy-actions">
+    <button mat-button color="primary" [routerLink]="['/toys', toy.id]">
+      <mat-icon>visibility</mat-icon> Ver Detalles
+    </button>
+
+    <button mat-button color="accent" (click)="onVote()">
+      <mat-icon>thumb_up</mat-icon> Me gusta
+    </button>
+
+    <ng-container *ngIf="isAdmin">
+      <button mat-button color="warn" [routerLink]="['/admin/edit', toy.id]">
+        <mat-icon>edit</mat-icon> Editar
+      </button>
+
+      <button mat-button color="warn" (click)="onDelete()">
+        <mat-icon>delete</mat-icon> Eliminar
+      </button>
+    </ng-container>
+  </mat-card-actions>
+</mat-card>

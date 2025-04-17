@@ -1,0 +1,78 @@
+<p>toy-detail works!</p>
+
+<div class="detail-container">
+  <div *ngIf="isLoading" class="loading-container">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Cargando información del juguete...</p>
+  </div>
+
+  <div *ngIf="!isLoading && !toy" class="error-container">
+    <mat-icon>error</mat-icon>
+    <h2>Juguete no encontrado</h2>
+    <p>Lo sentimos, el juguete que estás buscando no existe o ha sido eliminado.</p>
+    <button mat-raised-button color="primary" routerLink="/">Volver al inicio</button>
+  </div>
+
+  <div *ngIf="!isLoading && toy" class="toy-detail">
+    <div class="toy-detail-header">
+      <button mat-icon-button routerLink="/" class="back-button">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <h1 class="toy-title">{{ toy.title }}</h1>
+    </div>
+
+    <div class="toy-content">
+      <div class="toy-image-container">
+        <img [src]="toy.imageUrl" [alt]="toy.title" class="toy-detail-image">
+
+        <div class="toy-actions">
+          <button mat-raised-button color="accent" (click)="onVote()">
+            <mat-icon>thumb_up</mat-icon> Me gusta ({{ toy.votes }})
+          </button>
+
+          <ng-container *ngIf="isAdmin">
+            <button mat-raised-button color="primary" [routerLink]="['/admin/edit', toy.id]">
+              <mat-icon>edit</mat-icon> Editar
+            </button>
+
+            <button mat-raised-button color="warn" (click)="onDelete()">
+              <mat-icon>delete</mat-icon> Eliminar
+            </button>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="toy-details">
+        <mat-card>
+          <mat-card-content>
+            <h2>Descripción</h2>
+            <p class="toy-description">{{ toy.description }}</p>
+
+            <div class="toy-metadata">
+              <p><strong>Fecha de publicación:</strong> {{ toy.createdAt | date: 'dd/MM/yyyy' }}</p>
+              <p *ngIf="toy.updatedAt && toy.updatedAt !== toy.createdAt">
+                <strong>Última actualización:</strong> {{ toy.updatedAt | date: 'dd/MM/yyyy' }}
+              </p>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="comments-section">
+      <h2>Comentarios</h2>
+
+      <app-comment-form
+        [toyId]="toy.id"
+        (commentAdded)="onCommentAdded($event)">
+      </app-comment-form>
+
+      <app-comment-list
+        [comments]="comments"
+        [isLoading]="isLoadingComments"
+        [isAdmin]="isAdmin"
+        (commentDeleted)="onCommentDeleted($event)">
+      </app-comment-list>
+    </div>
+  </div>
+</div>
